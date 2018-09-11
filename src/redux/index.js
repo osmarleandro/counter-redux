@@ -1,18 +1,12 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
-
-//actions
-export const INCREMENT = "INCREMENT";
-export const DECREMENT = "DECREMENT";
-export const INCREMENT_AMOUNT = "INCREMENT_AMOUNT";
-export const RELOAD = "RELOAD";
-export const SAYMYNAME = "SAYMYNAME"
+import { INCREMENT, INCREMENT_AMOUNT, DECREMENT, RELOAD, SAY_MY_NAME } from "./actionTypes";
 
 export const increment = () => {
   return { type: INCREMENT }
 }
 
-export const decrement =() => {
-  return {type : DECREMENT }
+export const decrement = () => {
+  return { type: DECREMENT }
 }
 
 export const incrementAmount = (amount) => {
@@ -24,7 +18,7 @@ export const reload = () => {
 }
 
 export const sayMyName = (name) => {
-  return { type: SAYMYNAME, name }
+  return { type: SAY_MY_NAME, name }
 }
 
 const counter = (state = 0, action) => {
@@ -37,10 +31,15 @@ const counter = (state = 0, action) => {
   }
 }
 
-const name = (state = 'User', action) => {
-  switch(action.type){
-    case SAYMYNAME: return state + " " + action.name;
-    default: return state;
+const name = (state = "Your Name", action) => {
+  switch (action.type) {
+    case SAY_MY_NAME:
+      return {
+        ...state,
+        name: action.name
+      };
+    default:
+      return state;
   }
 }
 
