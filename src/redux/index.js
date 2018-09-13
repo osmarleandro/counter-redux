@@ -31,20 +31,18 @@ const counter = (state = 0, action) => {
   }
 }
 
-const name = (state = "Your Name", action) => {
+const nameReducer = (state = { name: "Your Name" }, action) => {
   switch (action.type) {
     case SAY_MY_NAME:
-      return {
-        ...state,
-        name: action.name
-      };
+      return { ...state, name: action.name };
+      
     default:
       return state;
   }
 }
 
 const reducers = combineReducers({
-  counter, name
+  counter, nameReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -18,7 +18,7 @@ class Counter extends Component {
         <button class="btn" onClick={() => this.props.reload()}>reload</button>
         <button class="btn" onClick={() => this.props.incrementAmount(10)}>+10</button>
 
-        <h1>Hello, {name.name}</h1>
+        <h1>Hello, {name}</h1>
         <input type="text" placeholder="Enter your name" onChange={event => this.setState({ inputValue: event.target.value })} />
         <button class="btn" onClick={() => this.props.sayMyName(this.state.inputValue)}>Say My Name</button>
       </div>
@@ -28,7 +28,7 @@ class Counter extends Component {
 
 const mapStateToProps = state => ({
   counter: state.counter,
-  name: state.name
+  name: state.nameReducer.name
 });
 
 const mapDispatchToProps = {
